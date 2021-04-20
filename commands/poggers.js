@@ -1,5 +1,5 @@
-const poggers = ({ client, message }) => {
+const poggers = ({ message, cmd, args }) => {
   message.reply('Ye dat so poggers');
 };
 
-exports.poggers = poggers;
+exports.handler = poggers;
