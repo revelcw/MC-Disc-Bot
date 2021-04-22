@@ -7,8 +7,6 @@ const server = async ({ message, cmd, args, color, icon }) => {
     const playerList = data.players.list
       ? data.players.list.map((player) => `•  ${player}`).join('\n')
       : 'Not Found';
-    const existsData = data ? data : 'N/A';
-    existsData.hello;
     const embed = new Discord.MessageEmbed()
       .setColor(color)
       .setTitle('1Smp Minecraft Server Info')
@@ -39,7 +37,7 @@ const server = async ({ message, cmd, args, color, icon }) => {
               ? `${
                   data.motd.clean
                 } ([view](${`https://mctools.org/motd-creator?text=${encodeURIComponent(
-                  data.motd.raw[0].replace('§', '&')
+                  data.motd.raw[0] + data.motd.raw[1].replace('§', '&')
                 )}`}))`
               : 'Server Offline'
           }`,
