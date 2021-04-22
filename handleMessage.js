@@ -18,6 +18,12 @@ const commands = {
     use: 'server',
     desc: 'Get info on the 1Smp server',
   },
+  coinflip: {
+    name: 'Coin Flip',
+    use: 'coinflip [<username>|<username> <username>]',
+    desc:
+      'Flips a coin. @ a person to flip against you and them. @ two people or things to pick between them',
+  },
 };
 
 for (const [key, value] of Object.entries(commands)) {
@@ -30,18 +36,29 @@ const handleMessage = async ({ client, message }) => {
   const [cmd, ...args] = words;
 
   if (message.content.startsWith(prefix) && commands[cmd]) {
-    await commands[cmd].handler({ message, cmd, args, color, icon, prefix });
+    await commands[cmd].handler({
+      message,
+      cmd,
+      args,
+      color,
+      icon,
+      prefix,
+      client,
+    });
   } else if (message.content.startsWith(prefix) && cmd === 'help') {
     const embed = new Discord.MessageEmbed()
       .setColor(color)
       .setTitle('Help')
       .setAuthor('1Smp', icon)
-      .setDescription('')
+      .setDescription('');
     for (const [key, command] of Object.entries(commands)) {
-      embed.addFields({name: `${command.name} — \`${prefix}${command.use}\``, value: command.desc})
+      embed.addFields({
+        name: `${command.name} — \`${prefix}${command.use}\``,
+        value: command.desc,
+      });
     }
     message.reply(embed);
-  } else if (message.content.startsWith(prefix) && !commands[cmd]){
+  } else if (message.content.startsWith(prefix) && !commands[cmd]) {
     message.reply(
       `Hmm, I checked my book and I didn\'t find that command... Please try again or use \`${prefix}help\``
     );
