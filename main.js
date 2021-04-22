@@ -11,7 +11,7 @@ client.once('ready', () => {
 
 client.on('message', message => {
   if (!message.author.bot) {
-    handleMessage({client, message, prefix})
+    handleMessage({client, message})
   }
 })
 
