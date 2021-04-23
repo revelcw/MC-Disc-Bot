@@ -24,6 +24,12 @@ const commands = {
     desc:
       'Flips a coin. @ a person to flip against you and them. @ two people or things to pick between them',
   },
+  face: {
+    name: 'Funny face',
+    use: 'face',
+    desc:
+      'Replys with a random funny face for your enjoyment (maybe...)',
+  },
 };
 
 for (const [key, value] of Object.entries(commands)) {
@@ -59,6 +65,7 @@ const handleMessage = async ({ client, message }) => {
     }
     message.reply(embed);
   } else if (message.content.startsWith(prefix) && !commands[cmd]) {
+    console.log(cmd, commands[cmd])
     message.reply(
       `Hmm, I checked my book and I didn\'t find that command... Please try again or use \`${prefix}help\``
     );
