@@ -1,7 +1,7 @@
 const coinflip = ({ message, cmd, args, client }) => {
   const outcome = Math.floor(Math.random() * 2) > 0;
   const heads = message.guild.emojis.cache.get('834899759126282350');
-  const tails = message.guild.emojis.cache.get('834904064281935954');
+  const tails = message.guild.emojis.cache.get('835524292178739201');
   const first = args[0];
   const second = args[1];
   const you = message.author;

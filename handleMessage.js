@@ -29,6 +29,11 @@ const commands = {
     use: 'face',
     desc: 'Replys with a random funny face for your enjoyment (maybe...)',
   },
+  say: {
+    name: 'Say',
+    use: 'say <text>',
+    desc: 'Posts the text into the chat',
+  },
 };
 
 for (const [key, value] of Object.entries(commands)) {
@@ -66,7 +71,7 @@ const handleMessage = async ({ client, message }) => {
     } else if (message.content.startsWith(prefix) && !commands[cmd]) {
       console.log(cmd, commands[cmd]);
       message.reply(
-        `Hmm, I checked my book and I didn\'t find that command... Please try again or use \`${prefix}help\``
+        `Hmm, I checkedx my book and I didn\'t find that command... Please try again or use \`${prefix}help\``
       );
     }
   }
