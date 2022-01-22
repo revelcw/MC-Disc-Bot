@@ -44,7 +44,7 @@ const server = async ({ message, cmd, args, color, icon }) => {
         },
         {
           name: 'Admin list',
-          value: '1Mon - Max, breadgoglin - Dylan, revelcw - Revel',
+          value: '1Mon (Max)',
         }
       );
     message.reply(embed);

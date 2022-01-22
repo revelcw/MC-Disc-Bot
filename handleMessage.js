@@ -21,8 +21,7 @@ const commands = {
   coinflip: {
     name: 'Coin Flip',
     use: 'coinflip [<username>|<username> <username>]',
-    desc:
-      'Flips a coin. @ a person to flip against you and them. @ two people or things to pick between them',
+    desc: 'Flips a coin. @ a person to flip against you and them. @ two people or things to pick between them',
   },
   face: {
     name: 'Funny face',
@@ -71,7 +70,7 @@ const handleMessage = async ({ client, message }) => {
     } else if (message.content.startsWith(prefix) && !commands[cmd]) {
       console.log(cmd, commands[cmd]);
       message.reply(
-        `Hmm, I checkedx my book and I didn\'t find that command... Please try again or use \`${prefix}help\``
+        `Hmm, I checked my book and I didn\'t find that command... Please try again or use \`${prefix}help\``
       );
     }
   }
