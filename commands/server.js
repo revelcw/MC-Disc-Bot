@@ -71,8 +71,9 @@ const server = async (interaction) => {
   if (resp.ok) {
     const data = await resp.json();
 
-    const isOnMobile =
-      !!interaction.member.presence?.clientStatus?.mobile ?? true;
+    const isOnMobile = !!(
+      interaction.member.presence?.clientStatus?.mobile ?? true
+    );
 
     const formattedMotd = isOnMobile
       ? leftTrimArray(data.motd.clean).join('\n')
