@@ -115,16 +115,23 @@ const emojis = [
   ':heart_eyes_cat:',
 ];
 
-const face = async (interaction) => {
+const face = ({ message, cmd, args }) => {
   const emoji = emojis[Math.floor(Math.random() * emojis.length)];
-  interaction.reply(emoji);
+  if (message.member.roles.cache.find((r) => r.name === 'Nerd')) {
+    message.channel.send(':nerd:');
+  } else {
+    message.channel.send(emoji);
+  }
 };
 
-module.exports = {
-  data: new SlashCommandBuilder()
-    .setName('face')
-    .setDescription('Makes a silly face!'),
-  async execute(interaction) {
-    await face(interaction);
-  },
-};
+const data = new SlashCommandBuilder()
+  .setName('echo')
+  .setDescription('Replies with your input!')
+  .addStringOption((option) =>
+    option
+      .setName('input')
+      .setDescription('The input to echo back')
+      .setRequired(true)
+  );
+
+exports.handler = { face, data };
