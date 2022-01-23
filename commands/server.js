@@ -70,9 +70,9 @@ const server = async (interaction) => {
   const resp = await fetch(`https://api.mcsrvstat.us/2/${serverIP}`);
   if (resp.ok) {
     const data = await resp.json();
-    console.log(interaction.member.presence.clientStatus, data.motd.clean);
 
-    const isOnMobile = !!interaction.member.presence.clientStatus.mobile;
+    const isOnMobile =
+      !!interaction.member.presence?.clientStatus?.mobile ?? true;
 
     const formattedMotd = isOnMobile
       ? leftTrimArray(data.motd.clean).join('\n')
