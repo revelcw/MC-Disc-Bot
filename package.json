@@ -15,5 +15,8 @@
     "discord.js": "^13.6.0",
     "dotenv": "^8.2.0",
     "node-fetch": "^2.6.7"
+  },
+  "engines": {
+    "node": "16.6"
   }
 }
