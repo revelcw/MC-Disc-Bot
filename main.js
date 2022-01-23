@@ -20,6 +20,7 @@ for (const file of commandFiles) {
 
 client.once('ready', () => {
   console.log('Bot Ready!');
+  client.user.setActivity('over the children', { type: 'WATCHING' });
 });
 
 client.on('interactionCreate', async (interaction) => {
