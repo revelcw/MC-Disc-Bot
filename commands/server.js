@@ -65,7 +65,7 @@ const leftTrimArray = (array) => {
 };
 
 const server = async (interaction) => {
-  const serverIP = interaction.options.getString('server_ip') ?? '1smp.mc.gg';
+  const serverIP = interaction.options.getString('server_ip');
 
   const resp = await fetch(`https://api.mcsrvstat.us/2/${serverIP}`);
   if (resp.ok) {
@@ -83,6 +83,7 @@ const server = async (interaction) => {
       .setColor(process.env.COLOR)
       .setTitle(`${serverIP} Minecraft Server Info`)
       .addField('Server MOTD', '```ansi\n' + formattedMotd + '\n```')
+      .addField('Status', data.online ? 'Online' : 'Offline', true)
       .addField(
         'Players',
         `${formatNumber(data.players.online)} / ${formatNumber(
@@ -101,14 +102,12 @@ const server = async (interaction) => {
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('server')
-    .setDescription(
-      'Gives you info on the 1smp server, or the server IP you pass in.'
-    )
+    .setDescription('Gives you info on the server IP you pass in.')
     .addStringOption((option) =>
       option
         .setName('server_ip')
-        .setDescription('The server IP (Defaults to 1smp.mc.gg)')
-        .setRequired(false)
+        .setDescription('The server IP')
+        .setRequired(true)
     ),
   async execute(interaction) {
     await server(interaction);
